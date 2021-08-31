@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-This script was written and run on Google Colaboratory.
+This code was written and run on Google Colaboratory.
 """
 
 
