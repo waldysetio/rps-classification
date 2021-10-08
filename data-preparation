@@ -1,0 +1,41 @@
+# Importing packages
+import tensorflow as tf
+from tensorflow.keras.optimizers import RMSprop
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import numpy as np
+from google.colab import files
+from keras.preprocessing import image
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+%matplotlib inline
+
+# Loading dataset
+!wget --no-check-certificate \
+https://github.com/dicodingacademy/assets/releases/download/release/rockpaperscissors.zip \
+  -O /tmp/rockpaperscissors.zip
+
+# Extracting zip file
+import zipfile,os
+local_zip = '/tmp/rockpaperscissors.zip'
+zip_ref = zipfile.ZipFile(local_zip, 'r')
+zip_ref.extractall('/tmp')
+zip_ref.close()
+
+# Splitting dataset
+!pip install split_folders
+import splitfolders
+splitfolders.ratio('/tmp/rockpaperscissors/rps-cv-images', '/tmp/rockpaperscissors/data', seed=1, ratio=(.6, .4))
+
+# Making directories
+base_dir = '/tmp/rockpaperscissors/data'
+train_dir = '/tmp/rockpaperscissors/data/train'
+validation_dir = '/tmp/rockpaperscissors/data/val'
+
+train_rock_dir = os.path.join(train_dir, 'rock')
+train_paper_dir = os.path.join(train_dir, 'paper')
+train_scissors_dir = os.path.join(train_dir, 'scissors')
+ 
+validation_rock_dir = os.path.join(validation_dir, 'rock')
+validation_paper_dir = os.path.join(validation_dir, 'paper')
+validation_scissors_dir = os.path.join(validation_dir, 'scissors')
